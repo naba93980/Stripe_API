@@ -5,8 +5,9 @@ const purchase = [
 const total_amount = 10998;
 const shipping_fee = 1099;
 
+//The stripe object is your entrypoint to the rest of the Stripe.js SDK.
 var stripe = Stripe(
-  'pk_test_51I87djFp5pnuKUXgBVIHiR36vVAWyfuyb7ckrhgyDNA1kM0GWHas9ZGUAgwJSFNUxrbyE6NwlMNmls1iGSfzHDdE00DQB3y6AH'
+  'pk_test_51Lzfc1SBPxz6nNvIHXDXPIy5kj66l0qRXGKKrk8Av0gqnXuO0COlgKoKKVCBvu29jd22jhld3iXauo5u3WkhlbED00OVI4FnKY'
 );
 
 // The items the customer wants to buy
@@ -24,8 +25,7 @@ fetch('/stripe', {
     return result.json();
   })
   .then(function (data) {
-    var elements = stripe.elements();
-
+    var elements = stripe.elements(); //This method creates an Elements instance, which manages a group of elements.
     var style = {
       base: {
         color: '#32325d',
