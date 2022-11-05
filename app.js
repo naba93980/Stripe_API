@@ -1,6 +1,5 @@
 require('dotenv').config();
 require('express-async-errors');
-const stripe = require('stripe')(process.env.SECRET_KEY);
 const stripeController = require('./controllers/stripeController');
 const express = require('express');
 const app = express();
