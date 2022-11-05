@@ -43,11 +43,12 @@ fetch('/stripe', {
       },
     };
 
-    var card = elements.create('card', { style: style });
+    var card = elements.create('card');
     // Stripe injects an iframe into the DOM
     card.mount('#card-element');
 
     card.on('change', function (event) {
+      console.log(event);
       // Disable the Pay button if there are no card details in the Element
       document.querySelector('button').disabled = event.empty;
       document.querySelector('#card-error').textContent = event.error
@@ -61,6 +62,9 @@ fetch('/stripe', {
       // Complete payment when the submit button is clicked
       payWithCard(stripe, card, data.clientSecret);
     });
+  })
+  .catch((err)=>{
+  console.log(err);
   });
 
 // Calls stripe.confirmCardPayment
